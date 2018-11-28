@@ -62,7 +62,7 @@ public class Matrices {
      */
     public static int getRowCount(Object[][] matrix){
         return matrix.length;
-    }
+    }  //x
 
     /**
      * Give the number of columns of a matrix (assumed to be rectangular).
@@ -72,6 +72,6 @@ public class Matrices {
      */
     public static int getColumnCount(Object[][] matrix){
         return matrix[0].length;
-    }
+    }  //y
 
 }
