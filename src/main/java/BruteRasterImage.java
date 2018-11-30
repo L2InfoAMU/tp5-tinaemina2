@@ -6,8 +6,8 @@ import static util.Matrices.requiresNonNull;
 
 public class BruteRasterImage implements Image {
 
-    public  final int width ;
-    public final int height ;
+    public int width ;
+    public int height ;
     public Color[][] colors ;
 
 
@@ -33,11 +33,13 @@ public class BruteRasterImage implements Image {
 
     @Override
     public Color getPixelColor(int x, int y) {
+
         return colors[x][y];
     }
 
     @Override
     public int getWidth() {
+
         return width;
     }
 
@@ -52,7 +54,34 @@ public class BruteRasterImage implements Image {
 
     }
     public void setPixelColor(Color color, int x, int y) {
-         colors[x][y] = color ;
+
+        colors[x][y] = color ;
     }
 
+    private void setPixelsColor(Color[][] pixels){
+        for(int x=0;x<width;x++) {
+            for (int y = 0; y < height; y++) {
+                setPixelColor(pixels[x][y],x,y);
+            }
+        }
+    }
+
+    private void setPixelsColor(Color color){
+        for(int x=0;x<width;x++) {
+            for (int y = 0; y < height; y++) {
+
+            }
+
+        }
+    }
+    protected void setWidth(int width){
+        this.width=width;
+    }
+    protected void setHeight(int height){
+        this.height=height;
+    }
+
+
+
 }
+
