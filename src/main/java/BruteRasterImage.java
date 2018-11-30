@@ -69,6 +69,7 @@ public class BruteRasterImage implements Image {
     private void setPixelsColor(Color color){
         for(int x=0;x<width;x++) {
             for (int y = 0; y < height; y++) {
+                setPixelColor(color,x,y);
 
             }
 
