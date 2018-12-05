@@ -4,7 +4,7 @@
 
 On va considérer quatre manières de représenter une image en couleur et donc quatre classes d'images :
 
-- `BruteRasterImage` 
+- `image.BruteRasterImage` 
 - `PaletteRasterImage` 
 - `SparseRasterImage` 
 - `VectorImage` 

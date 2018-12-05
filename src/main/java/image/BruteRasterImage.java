@@ -1,3 +1,5 @@
+package image;
+
 import image.Image;
 import javafx.scene.paint.Color;
 import util.Matrices;
