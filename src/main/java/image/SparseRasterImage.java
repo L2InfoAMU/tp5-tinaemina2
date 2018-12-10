@@ -8,8 +8,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 import static util.Matrices.requiresNonNull;
-import static util.Matrices.requiresNonZeroDimensions;
-
+import static util.Matrices.requiresNonZeroDimensions ;
 public class SparseRasterImage extends RasterImage implements Image  {
     private   Map<Point, Color> PixelsMap;
     /* private int width;
@@ -17,16 +16,7 @@ public class SparseRasterImage extends RasterImage implements Image  {
     public Color[][] colors;
 
     public SparseRasterImage(Color color, int width, int height) {
-        super(width, height);
-        this.createRepresentation();
-        this.PixelsMap = new HashMap<>();
-        colors = new Color[width][height];
 
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                colors[x][y] = color;
-            }
-        }
 
     }
 
