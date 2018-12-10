@@ -6,7 +6,8 @@ import util.Matrices;
 
 import static util.Matrices.requiresNonNull;
 
-public class BruteRasterImage implements Image {
+public class
+BruteRasterImage implements Image {
 
     public int width ;
     public int height ;
