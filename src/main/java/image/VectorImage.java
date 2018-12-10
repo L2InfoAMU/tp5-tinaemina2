@@ -10,14 +10,14 @@ import java.util.List;
 public class VectorImage implements Image{
 
 
-    List<Shape> shapes ;
+   private List<Shape> shapes ;
 
-    Color[][] pixelColor ;
+   private Color[][] pixelColor ;
 
-    int height , width ;
+  private  int height , width ;
 
 
-    VectorImage(List<Shape> shapes, int width, int height){
+   public VectorImage(List<Shape> shapes, int width, int height){
 
 
         this.shapes = shapes ;

@@ -3,9 +3,10 @@ import javafx.scene.paint.Color;
 
 public class Rectangle implements Shape {
 
-    int x,y,width,height ;
-    Color[][] pixelColor ;
-    Rectangle(int x, int y, int width, int height, Color color){
+   private int x,y,width,height ;
+    private Color[][] pixelColor ;
+
+  public  Rectangle(int x, int y, int width, int height, Color color){
         this.x = x;
         this.y = y ;
         this.width = width ;
@@ -18,7 +19,8 @@ public class Rectangle implements Shape {
         }
     }
     public boolean contains(Point point){
-        if(point.x < this.width + this.x && point.x > this.x && point.y < this.height && point.y > this.y)
+        if(point.x < this.width
+                + this.x && point.x > this.x && point.y < this.height +this.y && point.y > this.y)
             return true ;
         return false ;
     }
