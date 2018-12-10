@@ -2,110 +2,70 @@ package image;
 
 import javafx.scene.paint.Color;
 
-import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.PriorityQueue;
 
-import static util.Matrices.requiresNonNull;
-import static util.Matrices.requiresNonZeroDimensions ;
+
+
 public class SparseRasterImage extends RasterImage implements Image  {
-    private   Map<Point, Color> PixelsMap;
-    /* private int width;
-    private int height; */
-    public Color[][] colors;
+    private   Map<Point, Color> pixelMap;
+
+    public Point[][] colors;
 
     public SparseRasterImage(Color color, int width, int height) {
-
-
-    }
-
-    @Override
-    public Color getPixelColor(int x, int y) {
-        Color result = PixelsMap.get(new Point(x, y));
-        if (result == null)
-            return Color.WHITE;
-
-        return result;
-    }
-
-    boolean containsKey(Object key) {
-        if (key == PixelsMap)
-            return true;
-        else
-            return false;
-    }
-
-    Color get(Object key) {
-        Color getres = PixelsMap.get(key);
-        if (getres == null)
-            return null;
-        else
-            return getres;
-    }
-
-    Color getOrDefault(Object key, Color defaultValue) {
-        if (get(key) != null)
-            return get(key);
-        else
-            return PixelsMap.getOrDefault(key, defaultValue);
+        super(width, height);
+        this.createRepresentation();
+        for(int x = 0 ;x < width ; x++ ){
+            for(int y = 0 ; y < height ; y++){
+                colors[x][y] = new Point(x,y);
+                this.setPixelColor(color,x,y) ;
+            }
+        }
 
     }
-
-    Color put(Point key, Color value) {
-        return PixelsMap.put(key, value);
-    }
-
-    public SparseRasterImage(Color[][] pixels){
+    public SparseRasterImage(Color[][] pixels) {
         super(pixels.length, pixels[0].length);
-
-        requiresNonNull(pixels);
-        requiresNonZeroDimensions(pixels);
-        this.width = pixels.length;
-        this.height = pixels[0].length;
-        createRepresentation();
-        setPixelsColor(pixels);
-    }
-
-    public void createRepresentation() {
-        PixelsMap = new HashMap<Point, Color>();
-    }
-
-    public void setPixelColor(Color color, int x, int y) {
-
-    }
-
-    private void setPixelsColor(Color color) {
+        this.createRepresentation();
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                setPixelColor(color, x, y);
-
-            }
-
-        }
-
-
-    }
-    private void setPixelsColor(Color[][] pixels){
-        for(int x=0;x<width;x++) {
-            for (int y = 0; y < height; y++) {
-                setPixelColor(pixels[x][y],x,y);
+                this.colors[x][y] = new Point(x, y);
+                this.setPixelColor(pixels[x][y], x, y);
             }
         }
     }
-    public int getWidth(){
-        return width;
-    }
-    public int  getHeight(){
-        return height;
-    }
-    protected void setWidth(int width){
-        this.width=width;
-    }
+        public void createRepresentation(){
+            colors = new Point[width][height];
+            pixelMap = new HashMap<Point, Color>();
 
-    protected void setHeight(int height){
-        this.height=height;
-    }
+        }
+        public void setPixelColor(Color color, int x, int y){
+
+            pixelMap.put(colors[x][y], color);
+
+
+        }
+        public Color getPixelColor(int x, int y){
+            return pixelMap.get(colors[x][y]);
+        }
+        private void setPixelsColor(Color[][] pixels){
+            if(width < pixels.length || height < pixels[0].length)
+                throw new ArithmeticException("erreur");
+            for(int x = 0 ;x < width ; x++ ){
+                for(int y = 0 ; y < height ; y++){
+
+                    this.setPixelColor(pixels[x][y],x,y);
+                }
+            }
+        }
+        private void setPixelsColor(Color color){
+            for(int x = 0 ;x < width ; x++ ){
+                for(int y = 0 ; y < height ; y++){
+
+                    this.setPixelColor(color,x,y);
+                }
+            }
+        }
+
 
 
 }
